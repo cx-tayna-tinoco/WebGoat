@@ -7,21 +7,23 @@ name: Checkmarx One - SCA Scan With SCA Resolver (Maven Resolution)
 on:
   pull_request:
     types:
-     - opened
-     - synchronize
+     #- opened
+     #- synchronize
      - closed
     branches:
      - main  
      
-  push:
-    branches:
-      - 'tayna-dev'
+  # push:
+  #   branches:
+  #     - 'tayna-dev'
 
   workflow_dispatch:  
   
 jobs:
+
   #Executes SAST Scan
   sast:    
+  
     runs-on: ubuntu-latest
     steps:     
       - name: Checkout
