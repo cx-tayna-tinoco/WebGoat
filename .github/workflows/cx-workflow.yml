@@ -22,16 +22,15 @@ on:
   workflow_dispatch:  
   
 jobs:
-  if_merged:
-    if: github.event.pull_request.merged == true
     #Executes SAST Scan
-    sast:    
-    
+  sast:    
+    if_merged:
+      if: github.event.pull_request.merged == true
       runs-on: ubuntu-latest
       steps:     
         - name: Checkout
           uses: actions/checkout@v2
-  
+
         - name: Checkmarx AST Github Action
            # You may pin to the exact commit or the version.        
           uses: checkmarx/ast-github-action@main
@@ -63,9 +62,11 @@ jobs:
              pr_number: ${{ github.event.number }}           
              # Additional parameters for AST scan
              additional_params: --scan-types "sast"
-  
-    #Executes the SCA Resolver scan
-    sca-resolver:    
+
+  #Executes the SCA Resolver scan
+  sca-resolver:    
+    if_merged:
+      if: github.event.pull_request.merged == true
       needs: sast
       runs-on: ubuntu-latest
       steps:     
