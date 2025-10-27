@@ -13,11 +13,11 @@ on:
     branches:
      - main  
      
-  pull_request:
-    types:
-     - opened
-    branches:
-     - 'tayna-dev'
+  # pull_request:
+  #   types:
+  #    - opened
+  #   branches:
+  #    - 'tayna-dev'
 
   workflow_dispatch:  
   
