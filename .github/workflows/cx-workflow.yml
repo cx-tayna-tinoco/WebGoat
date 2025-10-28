@@ -24,7 +24,7 @@ on:
 jobs:  
     #Executes SAST Scan
     sast:    
-      if: github.event.pull_request.merged == true
+      if: github.base_ref == 'main' && github.event.pull_request.merged == true
       runs-on: ubuntu-latest
       steps:     
         - name: Checkout
